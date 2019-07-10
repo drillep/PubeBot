@@ -9,3 +9,7 @@ phases:
     commands:
       # Discover and run unit tests in the 'tests' directory
       - npm install
+      
+artifacts:
+  files:
+    - index.js
