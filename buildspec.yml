@@ -2,11 +2,9 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      # Install dependencies needed for running tests
-      runtime-versions:
-        nodejs: 10
-        
+    runtime-versions:
+      nodejs: 10
+
   pre_build:
     commands:
       # Discover and run unit tests in the 'tests' directory
