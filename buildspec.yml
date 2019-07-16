@@ -1,15 +1,14 @@
-version: 0.2
-
-phases:
-  install:
-    runtime-versions:
-      nodejs: 10
-
-  pre_build:
-    commands:
-      # Discover and run unit tests in the 'tests' directory
-      - npm install
-      
-artifacts:
-  files:
-    - '**/*'
+version: 0.0
+os: linux
+files:
+  - source: src
+    destination: /opt/webapp
+  - source: node_modules
+    destination: /opt/webapp/node_modules
+hooks:
+  ApplicationStop:
+    - location: scripts/stop.sh
+  AfterInstall:
+    - location: scripts/deploy.sh
+  ApplicationStart:
+    - location: scripts/start.sh
