@@ -1,5 +1,11 @@
 version: 0.2
 
+env:
+  parameter-store:
+    APPSYNC_API_KEY: "APPSYNC_API_KEY"
+    APPSYNC_URL: "APPSYNC_URL"
+    DISCORD_API_KEY: "DISCORD_API_KEY"
+
 phases:
   install:
     runtime-versions:

@@ -9,10 +9,10 @@ Description=NodeJS Discord bot server
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=webapp
-User=webapp
-Group=webapp
-ExecStart=/usr/bin/nodejs /opt/webapp/index.js
+SyslogIdentifier=ec2-user
+User=ec2-user
+Group=ec2-user
+ExecStart=/usr/bin/nodejs /opt/ec2-user/index.js
 [Install]
 WantedBy=multi-user.target
 SERVICE
