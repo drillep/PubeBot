@@ -1,12 +1,21 @@
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 const Discord = require('discord.js')
-const client = new Discord.Client();
 const fetch = require('node-fetch')
 
+const client = new Discord.Client()
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity("Lee losing", {type: "WATCHING"})
+  console.log(`Logged in as ${client.user.tag}!`)
+  let myArray = [
+    ["Lee losing", { type: "WATCHING" }],
+    ["Gary winning", { type: "WATCHING" }],
+    ["Neil moaning", { type: "LISTENING" }],
+    ["PUBEG", { type: "PLAYING" }],
+    ["PornHub", { type: "WATCHING"}]
+  ]
+  let randomItem = myArray[Math.floor(Math.random() * myArray.length)]
+  console.log(randomItem[0], randomItem[1])
+  client.user.setActivity(randomItem[0], randomItem[1]) //("Lee losing", {type: "WATCHING"})
 
   client.guilds.forEach((channel) => {
     console.log(` = ${channel.name} ${channel.type} ${channel.id}`)
@@ -34,7 +43,11 @@ const processCommand = (recievedMessage) => {
     // getMatchStats(arguments, recievedMessage, primaryCommand)
     recievedMessage.channel.send(`Squad stats in development`)
   } else {
-    getMatchStats(arguments, recievedMessage, primaryCommand)
+    try {
+      getMatchStats(arguments, recievedMessage, primaryCommand)
+    } catch (e) {
+      console.log('could not fetch ', e)
+    }
   }
 }
 
