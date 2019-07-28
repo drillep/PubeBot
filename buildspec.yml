@@ -13,11 +13,6 @@ phases:
       nodejs: 10
 
   build:
-    commands:
-      - export APPSYNC_API_KEY=APPSYNC_API_KEY
-      - export APPSYNC_URL=APPSYNC_URL
-      - export DISCORD_API_KEY=DISCORD_API_KEY
-
   pre_build:  
     commands:
       - npm install
