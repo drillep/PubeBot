@@ -2,6 +2,21 @@ require('dotenv').config()
 const Discord = require('discord.js')
 const fetch = require('node-fetch')
 
+const AWS = require('aws-sdk');
+AWS.config.update({ region: "eu-west-1" });
+
+const SSM = require('aws-sdk/clients/ssm');
+const ssm = new SSM()
+const query = {
+  "Names": ["APPSYNC_API_KEY", "APPSYNC_URL", "DISCORD_API_KEY"],
+  "WithDecryption": false
+}
+let param = ssm.getParameters(query, (err, data) => {
+  console.log('error = %o', err);
+  console.log('raw data = %o', data);
+})
+
+console.log()
 const client = new Discord.Client()
 
 client.on('ready', () => {
