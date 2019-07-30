@@ -12,11 +12,15 @@ const query = {
   "WithDecryption": false
 }
 let param = ssm.getParameters(query, (err, data) => {
-  console.log('error = %o', err);
-  console.log('raw data = %o', data);
+  console.log('error = %o', err)
+  return data.parameters
 })
 
-console.log()
+const appSyncApiKey = param[0].Value
+const appSyncUrl = param[1].Value
+const discordApiKey = param[2].Value
+console.log(discordApiKey)
+
 const client = new Discord.Client()
 
 client.on('ready', () => {
@@ -84,9 +88,9 @@ const helpCommand = (arguments, recievedMessage) => {
 }
 
 const getMatchStats = (arguments, recievedMessage, primaryCommand) => {
-  fetch(process.env.APPSYNC_URL, {
+  fetch(appSyncUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.APPSYNC_API_KEY },
+    headers: { 'Content-Type': 'application/json', 'x-api-key': appSyncApiKey },
     body: JSON.stringify({
       query: `{ matchData(playerName: \"${primaryCommand}\") { startedAt DBNOs assists boosts damageDealt deathType headshotKills heals killPlace killStreaks kills longestKill name playerId revives rideDistance roadKills swimDistance teamKills timeSurvived vehicleDestroys walkDistance weaponsAcquired winPlace } }`
     }),
@@ -123,4 +127,4 @@ const getMatchStats = (arguments, recievedMessage, primaryCommand) => {
   })
 }
 
-client.login(process.env.DISCORD_API_KEY);
+client.login(discordApiKey);
