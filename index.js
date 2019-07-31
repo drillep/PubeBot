@@ -22,7 +22,7 @@ const ssmConfig = async () => {
       config.appSyncUrl = i.Value
     }
     if (i.Name === 'DISCORD_API_KEY') {
-      config.discoredApiKey = i.Value
+      config.discordApiKey = i.Value
     }
   }
   return config
@@ -143,10 +143,11 @@ const getMatchStats = async (arguments, recievedMessage, primaryCommand) => {
         }
       })
     })
+    .catch(e => console.log(e))
 }
 let params = {}
 ssmConfig()
   .then(parameterStore => {
-    client.login(params.discoredApiKey)
+    client.login(parameterStore.discordApiKey)
     params = parameterStore
   })
