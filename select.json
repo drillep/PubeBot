@@ -1,0 +1,20 @@
+https://dlpszmh6jdkfv.cloudfront.net/solr/stable-en/stream?expr=significantTerms(stable-en,q=%22category_id:urn\:bbc\:homepage\:faith-and-ethics%22,field=%22title%22,limit=%2250%22,minDocFreq=%221%22,maxDocFreq=%22.001%22,minTermLength=%222%22
+
+
+https://dlpszmh6jdkfv.cloudfront.net/solr/stable-en/stream?expr=significantTerms
+(
+  stable-en,
+  q="tag_id:"urn:bbc:things:0b79dd85-35b5-40cd-b65e-cb152dd89fba%22%22,
+  field=%22tag_idname%22,
+  limit=%2250%22,
+  minDocFreq=%221%22,
+  maxDocFreq=%22.001%22,
+  minTermLength=%222%22
+)
+
+
+ select(
+ search(shortformvideo, q="language:en AND title:(newcastle united)", fl="id, title,synopses,parentSynopses", short="id asc"),
+ id,
+ analyse(synopses, synopses) as terms
+ )
