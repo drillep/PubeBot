@@ -13,7 +13,7 @@ StandardError=syslog
 SyslogIdentifier=webapp
 User=webapp
 Group=webapp
-ExecStart=/usr/bin/nodejs /opt/webapp/index.js
+ExecStart=/usr/bin/nodejs /opt/webapp/webapp.js
 
 [Install]
 WantedBy=multi-user.target
