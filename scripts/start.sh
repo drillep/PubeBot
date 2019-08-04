@@ -3,4 +3,4 @@
 #sudo systemctl start webapp
 
 cd /opt/webapp
-node index.js
+/usr/bin/node /opt/webapp/index.js
