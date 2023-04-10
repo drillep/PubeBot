@@ -10,7 +10,7 @@
   "author": "drillep",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.814.0",
+    "aws-sdk": "^2.1354.0",
     "discord.js": "^11.5.1",
     "dotenv": "^8.0.0",
     "node-fetch": "^2.6.1"
